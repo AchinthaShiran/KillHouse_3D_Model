@@ -12,6 +12,8 @@ void init() {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glEnable(GL_DEPTH_TEST);
 	glEnable(GL_CULL_FACE);
+	glCullFace(GL_FRONT);
+	glCullFace(GL_BACK);
 
 	glPolygonMode(GL_FRONT, GL_FILL);
 	glPolygonMode(GL_BACK, GL_FILL);
@@ -35,19 +37,42 @@ void drawGrid() {
 
 }
 
+void drawAxes() {
+
+	glBegin(GL_LINES);
+
+	glLineWidth(1.5);
+
+	glColor3f(1.0, 0.0, 0.0);
+	glVertex3f(-20, 0, 0);
+	glVertex3f(20, 0, 0);
+
+	glColor3f(0.0, 1.0, 0.0);
+	glVertex3f(0, -20, 0);
+	glVertex3f(0, 20, 0);
+
+	glColor3f(0.0, 0.0, 1.0);
+	glVertex3f(0, 0, -20);
+	glVertex3f(0, 0, 20);
+
+	glEnd();
+}
+
 void display() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glPushMatrix();
 	
 	gluLookAt(0.0 + camX, 2.0 + camY, 5.0 + camZ, 0, 0, 0, 0, 1.0, 0);
+
 	
 	glTranslatef(moveX, moveY, moveZ);
 	glRotatef(rotX, 1.0f, 0.0f, 0.0f);
 	glRotatef(rotY, 0.0f, 1.0f, 0.0f);
 	glRotatef(rotZ, 0.0f, 0.0f, 1.0f);
 	drawGrid();
+	drawAxes();
 	
-	wall(0, 0, 0,2,10,3);
+	wall(0, 0, 2,2,2,2 );
 
 	glPopMatrix();
 	glutSwapBuffers();
