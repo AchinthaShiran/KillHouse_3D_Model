@@ -1,9 +1,12 @@
 #include<iostream>
 #include<GL/glut.h>
+
 #include "models.h";
+#include "controls.h"
 
 GLfloat windowW = 10;
 GLfloat windowH = 10;
+
 
 void init() {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
@@ -35,9 +38,16 @@ void drawGrid() {
 void display() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glPushMatrix();
+	
+	gluLookAt(0.0 + camX, 2.0 + camY, 5.0 + camZ, 0, 0, 0, 0, 1.0, 0);
+	
+	glTranslatef(moveX, moveY, moveZ);
+	glRotatef(rotX, 1.0f, 0.0f, 0.0f);
+	glRotatef(rotY, 0.0f, 1.0f, 0.0f);
+	glRotatef(rotZ, 0.0f, 0.0f, 1.0f);
 	drawGrid();
-	//glColor3f(1.0f, 0.0f, 0.0f);
-	wall(0, 0, 0, 2, 2, 2);
+	
+	wall(0, 0, 0,2,10,3);
 
 	glPopMatrix();
 	glutSwapBuffers();
@@ -72,6 +82,9 @@ int main(int argc, char** argv) {
 	glutReshapeFunc(resize);
 	glutDisplayFunc(display);
 	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
+
+	glutSpecialFunc(keyboardSpecial);
+	glutKeyboardFunc(keyboard);
 
 	init();
 	glutMainLoop();
