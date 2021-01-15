@@ -68,9 +68,13 @@ void display() {
 	glPushMatrix();
 	
 	gluPerspective(1, 1, 10, 200);
-	gluLookAt(1.0 + camX, 2.0 + camY, 5.0 + camZ, 0, 0, 0, 0, 1.0, 0);
+	gluLookAt(-12.5 + camX, 5.5 + camY, 2.5 + camZ, 0, 0, 0, 0, 1.0, 0);
 
-	
+	cout << camX << " " << camY << " " << camZ<<"\n";
+	cout << moveX << " " << moveY << " " << moveZ << "\n";
+	cout << rotX << " " << rotY << " " << rotZ << "\n\n";
+
+
 	glTranslatef(moveX, moveY, moveZ);
 	glRotatef(rotX, 1.0f, 0.0f, 0.0f);
 	glRotatef(rotY, 0.0f, 1.0f, 0.0f);
@@ -83,11 +87,11 @@ void display() {
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, texture[0]);
 
-	wall(0, 0, 0, 3, 2, 2);
+	hutOne(0, 0, -5);
 	
-	glBindTexture(GL_TEXTURE_2D, texture[1]);
-
-	wall(5, 0, 0, 20, 2, 2);
+	//glBindTexture(GL_TEXTURE_2D, texture[1]);
+	//hut(0, 0, 15);
+	
 
 
 	glPopMatrix();

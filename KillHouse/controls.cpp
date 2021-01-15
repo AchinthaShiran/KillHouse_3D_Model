@@ -33,37 +33,37 @@ void keyboard(unsigned char key, int x, int y) {
 	if (key == 'w') {
 		moveY-= 0.5;
 	}
-	if (key == 'a') {
+	if (key == 'h') {
 		moveX += 0.5;
 	}
-	if (key == 'd') {
+	if (key == 'g') {
 		moveX -= 0.5;
 	}
-	if (key == 'g') {
+	if (key == 'a') {
 		moveZ += 0.5;
 	}
-	if (key == 'h') {
+	if (key == 'd') {
 		moveZ -= 0.5;
 	}
 
 	//rotate
-	if (key == 'k') {
-		rotX += 1.0;
-	}
-	if (key == 'i') {
-		rotX -= 1.0;
-	}
-	if (key == 'j') {
-		rotY += 1.0;
-	}
-	if (key == 'l') {
-		rotY -= 1.0;
-	}
 	if (key == '[') {
-		rotZ += 1.0;
+		rotX += 2.0;
 	}
 	if (key == ']') {
-		rotZ -= 1.0;
+		rotX -= 2.0;
+	}
+	if (key == 'j') {
+		rotY += 2.0;
+	}
+	if (key == 'l') {
+		rotY -= 2.0;
+	}
+	if (key == 'i') {
+		rotZ += 2.0;
+	}
+	if (key == 'k') {
+		rotZ -= 2.0;
 	}
 
 	//camera
