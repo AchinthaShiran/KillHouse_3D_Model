@@ -48,29 +48,29 @@ void keyboard(unsigned char key, int x, int y) {
 
 	//rotate
 	if (key == 'k') {
-		rotX += 0.5;
+		rotX += 1.0;
 	}
 	if (key == 'i') {
-		rotX -= 0.5;
+		rotX -= 1.0;
 	}
 	if (key == 'j') {
-		rotY += 0.5;
+		rotY += 1.0;
 	}
 	if (key == 'l') {
-		rotY -= 0.5;
+		rotY -= 1.0;
 	}
 	if (key == '[') {
-		rotZ += 0.5;
+		rotZ += 1.0;
 	}
 	if (key == ']') {
-		rotZ -= 0.5;
+		rotZ -= 1.0;
 	}
 
 	//camera
-	if (key == '4') {
+	if (key == '+') {
 		camX += 0.5;
 	}
-	if (key == '6') {
+	if (key == '-') {
 		camX -= 0.5;
 	}
 	if (key == '8') {
@@ -79,10 +79,10 @@ void keyboard(unsigned char key, int x, int y) {
 	if (key == '2') {
 		camY -= 0.5;
 	}
-	if (key == '+') {
+	if (key == '4') {
 		camZ += 0.5;
 	}
-	if (key == '-') {
+	if (key == '6') {
 		camZ -= 0.5;
 	}
 

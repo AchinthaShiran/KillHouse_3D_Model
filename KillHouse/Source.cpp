@@ -3,20 +3,25 @@
 
 #include "models.h";
 #include "controls.h"
+#include "textures.h"
 
-GLfloat windowW = 10;
-GLfloat windowH = 10;
+GLfloat windowW = 100;
+GLfloat windowH = 100;
+
 
 
 void init() {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
+	
 	glEnable(GL_DEPTH_TEST);
-	glEnable(GL_CULL_FACE);
-	glCullFace(GL_FRONT);
-	glCullFace(GL_BACK);
+	glGenTextures(2, texture);
+	loadExternalTextures();
 
-	glPolygonMode(GL_FRONT, GL_FILL);
-	glPolygonMode(GL_BACK, GL_FILL);
+	glEnable(GL_CULL_FACE);
+	
+	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
+
+	
 }
 
 void drawGrid() {
@@ -62,17 +67,28 @@ void display() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	glPushMatrix();
 	
-	gluLookAt(0.0 + camX, 2.0 + camY, 5.0 + camZ, 0, 0, 0, 0, 1.0, 0);
+	gluPerspective(1, 1, 10, 200);
+	gluLookAt(1.0 + camX, 2.0 + camY, 5.0 + camZ, 0, 0, 0, 0, 1.0, 0);
 
 	
 	glTranslatef(moveX, moveY, moveZ);
 	glRotatef(rotX, 1.0f, 0.0f, 0.0f);
 	glRotatef(rotY, 0.0f, 1.0f, 0.0f);
 	glRotatef(rotZ, 0.0f, 0.0f, 1.0f);
-	drawGrid();
-	drawAxes();
 	
-	wall(0, 0, 2,2,2,2 );
+	drawAxes();
+	glColor3f(1.0, 1.0, 1.0);
+	drawGrid();
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texture[0]);
+
+	wall(0, 0, 0, 3, 2, 2);
+	
+	glBindTexture(GL_TEXTURE_2D, texture[1]);
+
+	wall(5, 0, 0, 20, 2, 2);
+
 
 	glPopMatrix();
 	glutSwapBuffers();

@@ -6,45 +6,45 @@ void wall(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
 	glBegin(GL_QUADS);
 
 	//TOP
-	glColor3f(1.0, 1.0, 0.5);
-	glVertex3f(x, y + h, z);
-	glVertex3f(x, y + h, z + l);
-	glVertex3f(x + w, y + h, z + l);
-	glVertex3f(x + w, y + h, z);
+	glTexCoord2f(0.0,0.0); glVertex3f(x, y + h, z);
+	glTexCoord2f(1.0, 0.0); glVertex3f(x, y + h, z + l);
+	glTexCoord2f(1.0, 1.0); glVertex3f(x + w, y + h, z + l);
+	glTexCoord2f(0.0, 1.0); glVertex3f(x + w, y + h, z);
+	glEnd();
 
 	//BOTTOM
-	glColor3f(0.5, 1.0, 1.0);
-	glVertex3f(x, y, z);
-	glVertex3f(x + w, y, z);
-	glVertex3f(x + w, y, z + l);
-	glVertex3f(x, y, z + l);
-
+	glBegin(GL_QUADS);
+	glTexCoord2f(0.0, 0.0); glVertex3f(x, y, z);
+	glTexCoord2f(1.0, 0.0); glVertex3f(x + w, y, z);
+	glTexCoord2f(1.0, 1.0); glVertex3f(x + w, y, z + l);
+	glTexCoord2f(0.0, 1.0); glVertex3f(x, y, z + l);
+	glEnd();
 	// FRONT
-	glColor3f(1.0, 0.5, 0.5);
-	glVertex3f(x, y, z + l);
-	glVertex3f(x + w, y, z + l);
-	glVertex3f(x + w, y + h, z + l);
-	glVertex3f(x, y + h, z + l);
-
+	glBegin(GL_QUADS);
+	glTexCoord2f(0.0, 0.0); glVertex3f(x, y, z + l);
+	glTexCoord2f(2.0, 0.0); glVertex3f(x + w, y, z + l);
+	glTexCoord2f(2.0, 2.0); glVertex3f(x + w, y + h, z + l);
+	glTexCoord2f(0.0, 2.0); glVertex3f(x, y + h, z + l);
+	glEnd();
 	//// BACK
-	glColor3f(1.0f, 0.5f, 1.0f);
-	glVertex3f(x, y, z);
-	glVertex3f(x, y + h, z);
-	glVertex3f(x + w, y + h, z);
-	glVertex3f(x + w, y, z);
-
+	glBegin(GL_QUADS);
+	glTexCoord2f(0.0, 0.0); glVertex3f(x, y, z);
+	glTexCoord2f(1.0, 0.0); glVertex3f(x, y + h, z);
+	glTexCoord2f(1.0, 1.0); glVertex3f(x + w, y + h, z);
+	glTexCoord2f(0.0, 1.0); glVertex3f(x + w, y, z);
+	glEnd();
 	// LEFT
-	glColor3f(0.5, 1.0, 0.5);
-	glVertex3f(x, y, z);
-	glVertex3f(x, y, z + l);
-	glVertex3f(x, y + h, z + l);
-	glVertex3f(x, y + h, z);
-
+	glBegin(GL_QUADS);
+	glTexCoord2f(0.0, 0.0); glVertex3f(x, y, z);
+	glTexCoord2f(1.0, 0.0); glVertex3f(x, y, z + l);
+	glTexCoord2f(1.0, 1.0); glVertex3f(x, y + h, z + l);
+	glTexCoord2f(0.0, 1.0); glVertex3f(x, y + h, z);
+	glEnd();
 	//RIGHT
-	glColor3f(0.5, 0.5, 1.0);
-	glVertex3f(x + w, y, z);
-	glVertex3f(x + w, y + h, z);
-	glVertex3f(x + w, y + h, z + l);
-	glVertex3f(x + w, y, z + l);
+	glBegin(GL_QUADS);
+	glTexCoord2f(0.0, 0.0); glVertex3f(x + w, y, z);
+	glTexCoord2f(1.0, 0.0); glVertex3f(x + w, y + h, z);
+	glTexCoord2f(1.0, 1.0); glVertex3f(x + w, y + h, z + l);
+	glTexCoord2f(0.0, 1.0); glVertex3f(x + w, y, z + l);
 	glEnd();
 }
