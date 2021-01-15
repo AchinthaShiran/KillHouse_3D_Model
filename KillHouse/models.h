@@ -2,8 +2,14 @@
 
 void wall(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h);
 
-void normalWall(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l);
+void hutOne();
 
-void shortWall(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l);
+void hutTwo();
 
-void hutOne(GLfloat x, GLfloat y, GLfloat z);
+void sideOneWalls();
+
+void highWallX(GLfloat x, GLfloat y, GLfloat z, GLfloat len);
+
+void sideOne(GLfloat x, GLfloat y, GLfloat z);
+
+void sideTwo(GLfloat x, GLfloat y, GLfloat z);

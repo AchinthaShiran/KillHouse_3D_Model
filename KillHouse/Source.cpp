@@ -25,7 +25,7 @@ void init() {
 }
 
 void drawGrid() {
-	GLfloat ext = 20.0f;
+	GLfloat ext = 40.0f;
 	GLfloat step = 1.0f;
 	GLfloat yGrid = -0.4f;
 	GLint line;
@@ -85,14 +85,18 @@ void display() {
 	drawGrid();
 
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, texture[0]);
+	glBindTexture(GL_TEXTURE_2D, texture[1]);
 
-	hutOne(0, 0, -5);
-	
+	//hutOne(15, 0,-4 );
+	//normalWallX(0, 0, 8, 13);
+	sideOne(15, 0, -4);
 	//glBindTexture(GL_TEXTURE_2D, texture[1]);
 	//hut(0, 0, 15);
 	
+	glRotatef(180, 0, 1, 0);
+	glBindTexture(GL_TEXTURE_2D, texture[0]);
 
+	sideOne(30, 0, -4);
 
 	glPopMatrix();
 	glutSwapBuffers();

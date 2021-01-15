@@ -73,8 +73,12 @@ void wallX(GLfloat x, GLfloat y, GLfloat z, GLfloat len, GLfloat height) {
 	wall(x, y, z, 1, len, height);
 }
 
-void normalWallX(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
+void highWallX(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
 	wall(x, y, z, 1, len, 5);
+}
+
+void mediumWallX(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
+	wall(x, y, z, 1, len, 4);
 }
 
 void shortWallX_1(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
@@ -82,22 +86,30 @@ void shortWallX_1(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
 }
 
 
-
-void shortWallX(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
+void lowWallX(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
 	wall(x, y, z, 1, len, 2);
 }
+
+
+
+
 
 
 void wallY(GLfloat x, GLfloat y, GLfloat z, GLfloat len, GLfloat height) {
 	wall(x, y, z, 1, len, height);
 }
 
-void normalWallY(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
+void highWallY(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
 	wall(x, y, z, len, 1, 5);
 }
 
+void mediumWallY(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
+	wall(x, y, z, len, 1, 4);
+}
+
+
 void shortWallY(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
-	wall(x, y, z, len, 1, 1);
+	wall(x, y, z, len, 1, 2);
 }
 
 void wallFlat(GLfloat x, GLfloat y, GLfloat z, GLfloat l, GLfloat w) {
@@ -105,19 +117,17 @@ void wallFlat(GLfloat x, GLfloat y, GLfloat z, GLfloat l, GLfloat w) {
 }
 
 
-void hut(GLfloat x, GLfloat y, GLfloat z) {
-	glTranslatef(x, y, z);
-	
+void hut() {
 	//front
-	normalWallX(0, 0, 0, 4);
+	highWallX(0, 0, 0, 4);
 	shortWallX_1(0, 0, 4, 5);
 	shortWallX_1(0, 4, 4, 5);
-	normalWallX(0, 0, 9, 2);
+	highWallX(0, 0, 9, 2);
 	wallX(0, 1, 6, 1, 3);
 
 	//side
-	normalWallY(0, 0, 0, 8);
-	normalWallY(0, 0, 10, 8);
+	highWallY(0, 0, 0, 8);
+	highWallY(0, 0, 10, 8);
 
 
 	//top
@@ -127,15 +137,54 @@ void hut(GLfloat x, GLfloat y, GLfloat z) {
 	wallX(0, 6, 0, 11, 1);
 
 	//back
-	normalWallX(7, 0, 9, 1);
-	normalWallX(7, 0, 4, 3);
+	highWallX(7, 0, 9, 1);
+	highWallX(7, 0, 4, 3);
 	shortWallX_1(7, 4, 7, 2);
 	
 }
 
-void hutOne(GLfloat x, GLfloat y, GLfloat z) {
-	hut(x, y, z);
-	shortWallX(0, 0, -5, 5);
-	shortWallX(0, 0, 10, 4);
+void hutOne() {
+	hut();
+	lowWallX(0, 0, -4, 4);
+	lowWallX(0, 0, 11, 2);
+
+}
+
+void hutTwo() {
+	hut();
+	lowWallX(0, 0, -4, 4);
+	lowWallX(0, 0, 11, 2);
+	glRotatef(90, 0, 1, 0);
+
+}
+
+void sideOneWalls() {
+	//w1
+	highWallX(10, 0, -20, 16);
+	//w2
+	highWallX(10, 0, 20, 13);
+	//w3
+	mediumWallX(-1, 0, 19, 3);
+	lowWallX(-1, 0, 22, 4);
+	mediumWallX(-1, 0, 26, 4);
+	//w4
+	highWallX(-4, 0, -20, 10);
+	//w5
+	lowWallX(-6, 0, 14, 3);
+	shortWallY(-6, 0, 13, 4);
+}
+
+
+void sideOne(GLfloat x, GLfloat y, GLfloat z) {
+	glTranslatef(x, y, z);
+	hutOne();
+	sideOneWalls();
+
+}
+
+void sideTwo(GLfloat x, GLfloat y, GLfloat z) {
+	glTranslatef(x, y, z);
+	hutOne();
+	sideOneWalls();
 
 }
