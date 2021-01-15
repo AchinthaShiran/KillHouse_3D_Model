@@ -5,7 +5,7 @@
 
 extern unsigned int texture[2];
 
-void wall(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
+void wall_dead(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
 	glBegin(GL_QUADS);
 	glColor3f(1.0, 1.0, 1.0);
 
@@ -25,10 +25,11 @@ void wall(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
 	glTexCoord2f(1.0, 1.0); glVertex3f(x + w, y, z + l);
 	glTexCoord2f(0.0, 1.0); glVertex3f(x, y, z + l);
 	glEnd();
+	
+	
 	// FRONT
 	glBegin(GL_QUADS);
 	glColor3f(1.0, 0.0, 1.0);
-
 	glTexCoord2f(0.0, 0.0); glVertex3f(x, y, z + l);
 	glTexCoord2f(1.0, 0.0); glVertex3f(x + w, y, z + l);
 	glTexCoord2f(1.0, 1.0); glVertex3f(x + w, y + h, z + l);
@@ -59,6 +60,8 @@ void wall(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
 	glTexCoord2f(0.0, 1.0); glVertex3f(x, y + h, z);
 	glEnd();
 	//RIGHT
+
+
 	glBegin(GL_QUADS);
 	glColor3f(0.0, 0.0, 1.0);
 
@@ -69,8 +72,85 @@ void wall(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
 	glEnd();
 }
 
+
+void wall(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
+	
+	glPushMatrix();
+	glTranslatef(0, 0, 0);
+	glTranslatef(x, y, z);
+
+	glBegin(GL_QUADS);
+	glColor3f(1.0, 1.0, 1.0);
+
+	//TOP
+	glTexCoord2f(0.0, 0.0); glVertex3f(0, h, 0);
+	glTexCoord2f(1.0, 0.0); glVertex3f(0, h, l);
+	glTexCoord2f(1.0, 1.0); glVertex3f(w, h, l);
+	glTexCoord2f(0.0, 1.0); glVertex3f(w , h, 0);
+	glEnd();
+
+	//BOTTOM
+	glBegin(GL_QUADS);
+	glColor3f(0.0, 1.0, 0.0);
+
+	glTexCoord2f(0.0, 0.0); glVertex3f(0, 0, 0);
+	glTexCoord2f(1.0, 0.0); glVertex3f(w,0, 0);
+	glTexCoord2f(1.0, 1.0); glVertex3f(w , 0, l );
+	glTexCoord2f(0.0, 1.0); glVertex3f(0,0, l);
+	glEnd();
+
+
+	// FRONT
+	glBegin(GL_QUADS);
+	glColor3f(1.0, 0.0, 1.0);
+	glTexCoord2f(0.0, 0.0); glVertex3f(0, 0, l);
+	glTexCoord2f(1.0, 0.0); glVertex3f(w, 0, l);
+	glTexCoord2f(1.0, 1.0); glVertex3f(w, h, l);
+	glTexCoord2f(0.0, 1.0); glVertex3f(0, h , l);
+	glEnd();
+
+
+
+	//// BACK
+	glBegin(GL_QUADS);
+	glColor3f(1.0, 1.0, 1.0);
+
+	glTexCoord2f(1.0, 1.0); glVertex3f(0, 0, 0);
+	glTexCoord2f(1.0, 0.0); glVertex3f(0, h, 0);
+	glTexCoord2f(0.0, 0.0); glVertex3f(w , h, 0);
+	glTexCoord2f(0.0, 1.0); glVertex3f(w , 0, 0);
+	glEnd();
+
+
+
+	// LEFT
+	glBegin(GL_QUADS);
+	glColor3f(1.0, 0.0, 0.0);
+
+	glTexCoord2f(0.0, 0.0); glVertex3f(0, 0, 0);
+	glTexCoord2f(1.0, 0.0); glVertex3f(0, 0, l );
+	glTexCoord2f(1.0, 1.0); glVertex3f(0, h, l );
+	glTexCoord2f(0.0, 1.0); glVertex3f(0, h , 0);
+	glEnd();
+	//RIGHT
+
+
+	glBegin(GL_QUADS);
+	glColor3f(0.0, 0.0, 1.0);
+
+	glTexCoord2f(1.0, 1.0); glVertex3f(w , 0, 0);
+	glTexCoord2f(1.0, 0.0); glVertex3f(w , h , 0);
+	glTexCoord2f(0.0, 0.0); glVertex3f(w , h , l );
+	glTexCoord2f(0.0, 1.0); glVertex3f(w, 0, l) ;
+	glEnd();
+
+
+	glPopMatrix();
+}
+
 void wallX(GLfloat x, GLfloat y, GLfloat z, GLfloat len, GLfloat height) {
 	wall(x, y, z, 1, len, height);
+
 }
 
 void highWallX(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
@@ -181,9 +261,16 @@ void sideOneWalls() {
 
 
 void sideOne(GLfloat x, GLfloat y, GLfloat z) {
-	glTranslatef(x, y, z);
+	//glTranslatef(x, y, z);
+	//mediumWallY(0, 0, 0, 7);
 	hutOne();
 	sideOneWalls();
+
+	glRotatef(30, 0, 1, 0);
+	mediumWallX(-13, 0, 17, 7);
+
+	//glRotatef(30, 0, -1, 0);
+
 
 }
 

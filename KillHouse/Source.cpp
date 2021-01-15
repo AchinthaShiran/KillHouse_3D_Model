@@ -84,15 +84,15 @@ void display() {
 	glColor3f(1.0, 1.0, 1.0);
 	drawGrid();
 
-	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, texture[0]);
+	//glEnable(GL_TEXTURE_2D);
+	//glBindTexture(GL_TEXTURE_2D, texture[0]);
 
 
 	sideOne(15, 0, 0);
 	
 	glRotatef(180, 0, 1, 0);
-	glBindTexture(GL_TEXTURE_2D, texture[0]);
-	sideTwo(30, 0, -10);
+	//glBindTexture(GL_TEXTURE_2D, texture[0]);
+	//sideTwo(30, 0, -10);
 	
 
 	glPopMatrix();
