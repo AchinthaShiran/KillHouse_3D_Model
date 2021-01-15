@@ -85,18 +85,15 @@ void display() {
 	drawGrid();
 
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, texture[1]);
+	glBindTexture(GL_TEXTURE_2D, texture[0]);
 
-	//hutOne(15, 0,-4 );
-	//normalWallX(0, 0, 8, 13);
-	sideOne(15, 0, -4);
-	//glBindTexture(GL_TEXTURE_2D, texture[1]);
-	//hut(0, 0, 15);
+
+	sideOne(15, 0, 0);
 	
 	glRotatef(180, 0, 1, 0);
 	glBindTexture(GL_TEXTURE_2D, texture[0]);
-
-	sideOne(30, 0, -4);
+	sideTwo(30, 0, -10);
+	
 
 	glPopMatrix();
 	glutSwapBuffers();
