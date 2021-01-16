@@ -84,15 +84,22 @@ void display() {
 	glColor3f(1.0, 1.0, 1.0);
 	drawGrid();
 
-	//glEnable(GL_TEXTURE_2D);
-	//glBindTexture(GL_TEXTURE_2D, texture[0]);
-
-
-	sideOne(15, 0, 0);
 	
+	glPushMatrix();
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texture[0]);
+	sideOne(13, 0, 0);
+	glPopMatrix();
+	
+	glPushMatrix();
 	glRotatef(180, 0, 1, 0);
-	//glBindTexture(GL_TEXTURE_2D, texture[0]);
-	//sideTwo(30, 0, -10);
+	sideTwo(30, 0, -10);
+	glPopMatrix();
+	
+
+	glPushMatrix();
+	cardBoardHouse(-20,0,-22);
+	glPopMatrix();
 	
 
 	glPopMatrix();
@@ -122,7 +129,7 @@ void resize(GLsizei w, GLsizei h) {
 
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);
-	glutInitWindowSize(500, 500);
+	glutInitWindowSize(800, 800);
 	glutCreateWindow("Kill House");
 	glutPositionWindow(200, 200);
 	glutReshapeFunc(resize);

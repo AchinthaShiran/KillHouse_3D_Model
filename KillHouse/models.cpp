@@ -172,9 +172,6 @@ void lowWallX(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
 
 
 
-
-
-
 void wallY(GLfloat x, GLfloat y, GLfloat z, GLfloat len, GLfloat height) {
 	wall(x, y, z, 1, len, height);
 }
@@ -195,6 +192,29 @@ void lowWallY(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
 void wallFlat(GLfloat x, GLfloat y, GLfloat z, GLfloat l, GLfloat w) {
 	wall(x, y, z, w, l, 1);
 }
+
+
+void container(GLfloat x, GLfloat y, GLfloat z) {
+	wall(x, y, z, 5, 15, 5);
+}
+
+
+
+void cardBoardWallY(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
+	wall(x, y, z, len, 0.3, 5);
+}
+void cardBoardWallX(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
+	wall(x, y, z, 0.3, len, 5);
+}
+void cardBoardLowY(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
+	wall(x, y, z, len, 0.3, 1);
+}
+void cardBoardLowX(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
+	wall(x, y, z, 0.3, len, 1);
+}
+
+
+
 
 
 void hut() {
@@ -227,7 +247,6 @@ void hutOne() {
 	hut();
 	lowWallX(0, 0, -4, 4);
 	lowWallX(0, 0, 11, 2);
-
 }
 
 void hutTwo() {
@@ -261,16 +280,11 @@ void sideOneWalls() {
 
 
 void sideOne(GLfloat x, GLfloat y, GLfloat z) {
-	//glTranslatef(x, y, z);
-	//mediumWallY(0, 0, 0, 7);
+	glTranslatef(x, y, z);
 	hutOne();
 	sideOneWalls();
 
-	glRotatef(30, 0, 1, 0);
-	mediumWallX(-13, 0, 17, 7);
-
-	//glRotatef(30, 0, -1, 0);
-
+	//container(-20, y, 30);
 
 }
 
@@ -307,4 +321,36 @@ void sideTwo(GLfloat x, GLfloat y, GLfloat z) {
 	hutTwo();
 	sideTwoWalls();
 
+	container(-20, 0, -23);
+}
+
+void cardBoardHouse(GLfloat x, GLfloat y, GLfloat z) {
+	glPushMatrix();
+	glTranslatef(x, y, z);
+	
+	cardBoardWallX(0, 0, 0, 3);
+	cardBoardLowX(0, 4, 3, 2);
+	cardBoardWallX(0, 0, 5, 4);
+
+	cardBoardWallX(10, 0, 0, 5);
+	cardBoardLowX(10, 4, 5, 2);
+	cardBoardWallX(10, 0, 7, 2);
+
+	cardBoardWallX(20, 0, 0, 3);
+	cardBoardLowX(20, 4, 3, 2);
+	cardBoardWallX(20, 0, 5, 4);
+
+
+	cardBoardWallY(0, 0, 0, 20);
+
+	cardBoardWallY(0, 0, 9, 3);
+	cardBoardLowY(3, 0, 9, 2);
+	cardBoardLowY(3, 4, 9, 2);
+	cardBoardWallY(5, 0, 9, 10);
+	cardBoardLowY(15, 0, 9, 2);
+	cardBoardLowY(15, 4, 9, 2);
+	cardBoardWallY(17, 0, 9, 3);
+
+
+	glPopMatrix();
 }
