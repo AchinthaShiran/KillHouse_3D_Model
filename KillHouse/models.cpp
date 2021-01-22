@@ -73,7 +73,7 @@ void wall_dead(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h)
 }
 
 
-void wall(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
+void cube(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
 	
 	glPushMatrix();
 	glTranslatef(0, 0, 0);
@@ -148,76 +148,119 @@ void wall(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
 	glPopMatrix();
 }
 
+
 void wallX(GLfloat x, GLfloat y, GLfloat z, GLfloat len, GLfloat height) {
-	wall(x, y, z, 1, len, height);
+	cube(x, y, z, 1, len, height);
 
 }
 
 void highWallX(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
-	wall(x, y, z, 1, len, 5);
+	cube(x, y, z, 1, len, 5);
 }
 
 void mediumWallX(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
-	wall(x, y, z, 1, len, 4);
+	cube(x, y, z, 1, len, 4);
 }
 
 void shortWallX_1(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
-	wall(x, y, z, 1, len, 1);
+	cube(x, y, z, 1, len, 1);
 }
-
 
 void lowWallX(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
-	wall(x, y, z, 1, len, 2);
+	cube(x, y, z, 1, len, 2);
 }
-
 
 
 void wallY(GLfloat x, GLfloat y, GLfloat z, GLfloat len, GLfloat height) {
-	wall(x, y, z, 1, len, height);
+	cube(x, y, z, 1, len, height);
 }
 
 void highWallY(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
-	wall(x, y, z, len, 1, 5);
+	cube(x, y, z, len, 1, 5);
 }
 
 void mediumWallY(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
-	wall(x, y, z, len, 1, 4);
+	cube(x, y, z, len, 1, 4);
 }
-
 
 void lowWallY(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
-	wall(x, y, z, len, 1, 2);
+	cube(x, y, z, len, 1, 2);
 }
 
+
 void wallFlat(GLfloat x, GLfloat y, GLfloat z, GLfloat l, GLfloat w) {
-	wall(x, y, z, w, l, 1);
+	cube(x, y, z, w, l, 1);
 }
 
 
 void container(GLfloat x, GLfloat y, GLfloat z) {
-	wall(x, y, z, 5, 15, 5);
+	cube(x, y, z, 5, 15, 5);
 }
-
 
 
 void cardBoardWallY(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
-	wall(x, y, z, len, 0.3, 5);
+	cube(x, y, z, len, 0.2, 5);
 }
 void cardBoardWallX(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
-	wall(x, y, z, 0.3, len, 5);
+	cube(x, y, z, 0.2, len, 5);
 }
 void cardBoardLowY(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
-	wall(x, y, z, len, 0.3, 1);
+	cube(x, y, z, len, 0.2, 1);
 }
 void cardBoardLowX(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
-	wall(x, y, z, 0.3, len, 1);
+	cube(x, y, z, 0.2, len, 1);
+}
+
+void towerPole(GLfloat x, GLfloat y, GLfloat z) {
+	cube(x, y, z, 0.3, 0.3, 15);
+}
+
+void towerPoleShortX(GLfloat x, GLfloat y, GLfloat z) {
+	cube(x, y, z, 4.3, 0.3, 0.3);
+}
+void towerPoleShortY(GLfloat x, GLfloat y, GLfloat z) {
+	cube(x, y, z, 0.3, 4.3, 0.3);
+}
+
+void towerSideY(GLfloat x, GLfloat y, GLfloat z) {
+	cube(x, y, z, 0.3, 4.3, 2.0);
+}
+
+void towerSideX(GLfloat x, GLfloat y, GLfloat z) {
+	cube(x, y, z, 4.3, 0.3, 2.0);
+}
+
+void towerSideX_Ladder(GLfloat x, GLfloat y, GLfloat z) {
+	cube(x, y, z, 1.25, 0.3, 2.0);
+	cube(x+3.05, y, z, 1.15, 0.3, 2.0);
 }
 
 
+void towerRoof(GLfloat x, GLfloat y, GLfloat z) {
+	cube(x, y, z, 5.2, 5.2, 0.05);
+}
+
+void towerFloor(GLfloat x, GLfloat y, GLfloat z) {
+	cube(x, y, z, 4.3, 4.3, 0.1);
+}
+
+void ladder(GLfloat x, GLfloat y, GLfloat z) {
+	cube(x, y, z, 0.05, 0.05, 10);
+	cube(x+1, y, z, 0.05, 0.05,10);
+
+	for (int i = 0; i < 20; i++) {
+		cube(x, y+(i/2), z, 1, 0.05, 0.05);
+	}
+
+}
 
 
 
 void hut() {
+
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texture[0]);
+
 	//front
 	highWallX(0, 0, 0, 4);
 	shortWallX_1(0, 0, 4, 5);
@@ -241,16 +284,24 @@ void hut() {
 	highWallX(7, 0, 4, 3);
 	shortWallX_1(7, 4, 7, 2);
 	
+	glDisable(GL_TEXTURE_2D);
 }
 
 void hutOne() {
 	hut();
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texture[0]);
+
 	lowWallX(0, 0, -4, 4);
 	lowWallX(0, 0, 11, 2);
+	glDisable(GL_TEXTURE_2D);
+
 }
 
 void hutTwo() {
 	hut();
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texture[0]);
 	mediumWallX(0, 0, -2, 2);
 	lowWallX(0, 0, -5, 3);
 	mediumWallX(0, 0, -8, 3);
@@ -258,9 +309,14 @@ void hutTwo() {
 	mediumWallX(1, 0, 11, 2);
 	lowWallX(1, 0, 13, 3);
 	mediumWallX(1, 0, 16, 3);
+	glDisable(GL_TEXTURE_2D);
+
 }
 
 void sideOneWalls() {
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texture[0]);
+
 	//w1
 	highWallX(10, 0, -20, 16);
 	//w2
@@ -276,6 +332,9 @@ void sideOneWalls() {
 	lowWallY(-6, 0, 13, 4);
 	//w3
 	mediumWallY(-13, 0, 28, 7);
+
+	glDisable(GL_TEXTURE_2D);
+
 }
 
 
@@ -289,6 +348,9 @@ void sideOne(GLfloat x, GLfloat y, GLfloat z) {
 }
 
 void sideTwoWalls() {
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, texture[0]);
+
 	//w1
 	mediumWallX(0, 0, -17, 4);
 	lowWallX(0, 0, -20, 3);
@@ -314,6 +376,9 @@ void sideTwoWalls() {
 	//w6
 	mediumWallY(-10, 0, -17, 6);
 	mediumWallX(-7, 0, -16, 7);
+
+	glDisable(GL_TEXTURE_2D);
+
 }
 
 void sideTwo(GLfloat x, GLfloat y, GLfloat z) {
@@ -353,4 +418,35 @@ void cardBoardHouse(GLfloat x, GLfloat y, GLfloat z) {
 
 
 	glPopMatrix();
+}
+
+void tower(GLfloat x, GLfloat y, GLfloat z) {
+	//legs
+	towerPole(0, 0, 0);
+	towerPole(4, 0, 0);
+	towerPole(0, 0, 4);
+	towerPole(4, 0, 4);
+
+	//top frame
+	towerPoleShortX(0, 15, 0);
+	towerPoleShortY(4, 15, 0);
+	towerPoleShortX(0, 15, 4);
+	towerPoleShortY(0, 15, 0);
+
+	//bottom frame
+	//towerPoleShortX(0, 0, 0);
+	towerPoleShortY(4, 0, 0);
+	//towerPoleShortX(0, 0, 4);
+	towerPoleShortY(0, 0, 0);
+
+	//sides
+	towerSideX(0, 10, 0);
+	towerSideY(4, 10, 0);
+	//towerSideX(0, 10, 4);
+	towerSideY(0, 10, 0);
+	towerSideX_Ladder(0, 10, 4);
+
+	towerRoof(-0.45, 15.3, -0.45);
+	towerFloor(0, 10, 0);
+	ladder(1.53, 0, 4.3);
 }

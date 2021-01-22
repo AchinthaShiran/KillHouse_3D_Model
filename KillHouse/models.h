@@ -1,6 +1,6 @@
 #pragma once
 
-void wall(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h);
+void cube(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h);
 
 void hutOne();
 
@@ -15,3 +15,5 @@ void sideOne(GLfloat x, GLfloat y, GLfloat z);
 void sideTwo(GLfloat x, GLfloat y, GLfloat z);
 
 void cardBoardHouse(GLfloat x, GLfloat y, GLfloat z);
+
+void tower(GLfloat x, GLfloat y, GLfloat z);
