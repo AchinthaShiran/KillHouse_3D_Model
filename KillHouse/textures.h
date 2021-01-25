@@ -2,7 +2,6 @@
 #include<string>
 using namespace std;
 
-extern unsigned int texture[2];
 
 struct BitMapFile {
 	int sizeX;

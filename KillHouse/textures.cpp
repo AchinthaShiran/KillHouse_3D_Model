@@ -6,7 +6,6 @@
 
 using namespace std;
 
-unsigned int texture[2];
 
 
 
@@ -78,24 +77,23 @@ BitMapFile* getBmp(string fileName) {
 
 	return bmpRGBA;
 }
-
 void loadExternalTextures() {
-	BitMapFile* image[2];
+	BitMapFile* image[7];
 	image[0] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/wall.bmp");
-	image[1] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/wall2.bmp");
+	image[1] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/wall3.bmp");
+	image[2] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/wall2.bmp");
+	image[3] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/wood.bmp");
+	image[4] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/floor.bmp");
+	image[5] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/container.bmp");
+	image[6] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/outerWall.bmp");
 
-	glBindTexture(GL_TEXTURE_2D, texture[0]);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image[0]->sizeX, image[0]->sizeY, 0, GL_RGBA, GL_UNSIGNED_BYTE, image[0]->data);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
-
-	glBindTexture(GL_TEXTURE_2D, texture[1]);
-	glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image[1]->sizeX, image[1]->sizeY, 0, GL_RGBA, GL_UNSIGNED_BYTE, image[1]->data);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
-	glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	for (int i = 0; i < 7; i++) {
+		glBindTexture(GL_TEXTURE_2D, i);
+		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image[i]->sizeX, image[i]->sizeY, 0, GL_RGBA, GL_UNSIGNED_BYTE, image[i]->data);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_REPEAT);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_NEAREST);
+		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_NEAREST);
+	}
 
 }

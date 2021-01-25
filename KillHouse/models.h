@@ -17,3 +17,7 @@ void sideTwo(GLfloat x, GLfloat y, GLfloat z);
 void cardBoardHouse(GLfloat x, GLfloat y, GLfloat z);
 
 void tower(GLfloat x, GLfloat y, GLfloat z);
+
+void floor(GLfloat x, GLfloat y, GLfloat z);
+
+void outerWall(GLfloat x, GLfloat y, GLfloat z);

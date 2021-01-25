@@ -25,7 +25,7 @@ void init() {
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glLoadIdentity();
 	glEnable(GL_DEPTH_TEST);
-	glGenTextures(2, texture);
+	//glGenTextures(2, texture);
 	loadExternalTextures();
 
 	glEnable(GL_CULL_FACE);
@@ -86,6 +86,7 @@ void drawAxes() {
 
 void display() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
+	
 	glPushMatrix();
 	glNormal3f(0.0, 0.0, 1.0);
 	gluPerspective(1, 1, 10, 200);
@@ -105,12 +106,8 @@ void display() {
 	glColor3f(1.0, 1.0, 1.0);
 	drawGrid();
 
-	
-	glPushMatrix();
-	//glEnable(GL_TEXTURE_2D);
-	//glBindTexture(GL_TEXTURE_2D, texture[0]);
-	sideOne(13, 0, 0);
-	glPopMatrix();
+
+	sideOne(30, 0, 0);
 	
 	glPushMatrix();
 	glRotatef(180, 0, 1, 0);
@@ -118,12 +115,13 @@ void display() {
 	glPopMatrix();
 	
 
-	glPushMatrix();
-	cardBoardHouse(-20,0,-22);
-	glPopMatrix();
+	cardBoardHouse(-20,0,-21);
 	
+	tower(0, 0, 4);
 
-	tower(0, 0, 0);
+	floor(0, 0, 0);
+
+	outerWall(0, 0, 0);
 
 	glPopMatrix();
 	glutSwapBuffers();

@@ -3,7 +3,6 @@
 #include "models.h"
 
 
-extern unsigned int texture[2];
 
 void wall_dead(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
 	glBegin(GL_QUADS);
@@ -172,7 +171,7 @@ void lowWallX(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
 
 
 void wallY(GLfloat x, GLfloat y, GLfloat z, GLfloat len, GLfloat height) {
-	cube(x, y, z, 1, len, height);
+	cube(x, y, z, len, 1, height);
 }
 
 void highWallY(GLfloat x, GLfloat y, GLfloat z, GLfloat len) {
@@ -257,9 +256,10 @@ void ladder(GLfloat x, GLfloat y, GLfloat z) {
 
 
 void hut() {
+	glPushMatrix();
 
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, texture[0]);
+	glBindTexture(GL_TEXTURE_2D, 0);
 
 	//front
 	highWallX(0, 0, 0, 4);
@@ -285,23 +285,29 @@ void hut() {
 	shortWallX_1(7, 4, 7, 2);
 	
 	glDisable(GL_TEXTURE_2D);
+	glPopMatrix();
 }
 
 void hutOne() {
+	glPushMatrix();
+
 	hut();
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, texture[0]);
+	glBindTexture(GL_TEXTURE_2D, 0);
 
 	lowWallX(0, 0, -4, 4);
 	lowWallX(0, 0, 11, 2);
 	glDisable(GL_TEXTURE_2D);
+	glPopMatrix();
 
 }
 
 void hutTwo() {
+	glPushMatrix();
+
 	hut();
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, texture[0]);
+	glBindTexture(GL_TEXTURE_2D, 0);
 	mediumWallX(0, 0, -2, 2);
 	lowWallX(0, 0, -5, 3);
 	mediumWallX(0, 0, -8, 3);
@@ -310,15 +316,18 @@ void hutTwo() {
 	lowWallX(1, 0, 13, 3);
 	mediumWallX(1, 0, 16, 3);
 	glDisable(GL_TEXTURE_2D);
+	glPopMatrix();
 
 }
 
 void sideOneWalls() {
+	glPushMatrix();
+
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, texture[0]);
+	glBindTexture(GL_TEXTURE_2D, 0);
 
 	//w1
-	highWallX(10, 0, -20, 16);
+	highWallX(10, 0, -21, 16);
 	//w2
 	highWallX(10, 0, 20, 13);
 	//w3
@@ -326,7 +335,7 @@ void sideOneWalls() {
 	lowWallX(-1, 0, 21, 4);
 	mediumWallX(-1, 0, 25, 8);
 	//w4
-	highWallX(-4, 0, -20, 10);
+	highWallX(-4, 0, -21, 10);
 	//w5
 	lowWallX(-6, 0, 14, 3);
 	lowWallY(-6, 0, 13, 4);
@@ -334,22 +343,28 @@ void sideOneWalls() {
 	mediumWallY(-13, 0, 28, 7);
 
 	glDisable(GL_TEXTURE_2D);
+	glPopMatrix();
 
 }
 
 
 void sideOne(GLfloat x, GLfloat y, GLfloat z) {
+	glPushMatrix();
+
 	glTranslatef(x, y, z);
 	hutOne();
 	sideOneWalls();
 
 	//container(-20, y, 30);
+	glPopMatrix();
 
 }
 
 void sideTwoWalls() {
+	glPushMatrix();
+
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, texture[0]);
+	glBindTexture(GL_TEXTURE_2D, 0);
 
 	//w1
 	mediumWallX(0, 0, -17, 4);
@@ -378,21 +393,36 @@ void sideTwoWalls() {
 	mediumWallX(-7, 0, -16, 7);
 
 	glDisable(GL_TEXTURE_2D);
+	glPopMatrix();
 
 }
 
 void sideTwo(GLfloat x, GLfloat y, GLfloat z) {
+	glPushMatrix();
+
 	glTranslatef(x, y, z);
 	hutTwo();
 	sideTwoWalls();
 
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, 5);
 	container(-20, 0, -23);
+	glDisable(GL_TEXTURE_2D);
+	glPopMatrix();
+
 }
 
 void cardBoardHouse(GLfloat x, GLfloat y, GLfloat z) {
 	glPushMatrix();
+	glEnable(GL_TEXTURE_2D);
+
 	glTranslatef(x, y, z);
+
 	
+
+	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, 1);
+
 	cardBoardWallX(0, 0, 0, 3);
 	cardBoardLowX(0, 4, 3, 2);
 	cardBoardWallX(0, 0, 5, 4);
@@ -415,12 +445,26 @@ void cardBoardHouse(GLfloat x, GLfloat y, GLfloat z) {
 	cardBoardLowY(15, 0, 9, 2);
 	cardBoardLowY(15, 4, 9, 2);
 	cardBoardWallY(17, 0, 9, 3);
-
-
+		
 	glPopMatrix();
+
+	glPushMatrix();
+	glBindTexture(GL_TEXTURE_2D, 0);
+	mediumWallX(1, 0, 9.2, 3);
+	mediumWallX(19, 0, 9.2, 3);
+	glPopMatrix();
+
+	glDisable(GL_TEXTURE_2D);
+	glPopMatrix();
+
 }
 
 void tower(GLfloat x, GLfloat y, GLfloat z) {
+	glPushMatrix();
+	glTranslatef(x, y, z);
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, 3);
+
 	//legs
 	towerPole(0, 0, 0);
 	towerPole(4, 0, 0);
@@ -442,11 +486,39 @@ void tower(GLfloat x, GLfloat y, GLfloat z) {
 	//sides
 	towerSideX(0, 10, 0);
 	towerSideY(4, 10, 0);
-	//towerSideX(0, 10, 4);
 	towerSideY(0, 10, 0);
 	towerSideX_Ladder(0, 10, 4);
-
 	towerRoof(-0.45, 15.3, -0.45);
 	towerFloor(0, 10, 0);
 	ladder(1.53, 0, 4.3);
+	glDisable(GL_TEXTURE_2D);
+	glPopMatrix();
+
+}
+
+void floor(GLfloat x, GLfloat y, GLfloat z) {
+	glPushMatrix();
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, 4);
+	glBegin(GL_POLYGON);
+	glTexCoord2f(0.0, 0.0); glVertex3f(-50, 0.0, 33);
+	glTexCoord2f(1.0, 0.0); glVertex3f(50, 0.0, 33);
+	glTexCoord2f(1.0, 1.0); glVertex3f(50, 0.0, -21);
+	glTexCoord2f(0.0, 1.0); glVertex3f(-50, 0.0, -21);
+	glEnd();
+	glDisable(GL_TEXTURE_2D);
+	glPopMatrix();
+}
+
+void outerWall(GLfloat x, GLfloat y, GLfloat z) {
+	glPushMatrix();
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, 6);
+	wallY(-50, 0, 33, 100, 20);
+	wallY(-50, 0, -21.9, 100, 20);
+	wallX(-50, 0, -21, 54, 20);
+	wallX(50, 0, -22, 56, 20);
+	glDisable(GL_TEXTURE_2D);
+
+	glPopMatrix();
 }
