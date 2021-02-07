@@ -19,24 +19,17 @@ void initLighting() {
 
 }
 
-void init() {
-	GLfloat globalAmbient[] = { 0.8,0.8,0.8,1.0 };
-	
+void init() {	
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glLoadIdentity();
 	glEnable(GL_DEPTH_TEST);
-	//glGenTextures(2, texture);
 	loadExternalTextures();
 
 	glEnable(GL_CULL_FACE);
 
-	//glLightModeli(GL_LIGHT_MODEL_LOCAL_VIEWER, GL_TRUE);
-	//glEnable(GL_LIGHTING);
-	//glEnable(GL_LIGHT0);
+	
 	glShadeModel(GL_SMOOTH);
 
-	//glLightModelfv(GL_LIGHT_MODEL_AMBIENT, globalAmbient);
-	//initLighting();
 
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
 
@@ -87,6 +80,8 @@ void drawAxes() {
 void display() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 	
+
+
 	glPushMatrix();
 	glNormal3f(0.0, 0.0, 1.0);
 	gluPerspective(1, 1, 10, 200);
@@ -107,7 +102,7 @@ void display() {
 	drawGrid();
 
 
-	sideOne(30, 0, 0);
+	sideOne(25, 0, 0);
 	
 	glPushMatrix();
 	glRotatef(180, 0, 1, 0);
@@ -115,7 +110,7 @@ void display() {
 	glPopMatrix();
 	
 
-	cardBoardHouse(-20,0,-21);
+	cardBoardHouse(-20,0,-19);
 	
 	tower(0, 0, 4);
 
@@ -123,10 +118,13 @@ void display() {
 
 	outerWall(0, 0, 0);
 
+	//roof(0, 0, 0);
 	glPopMatrix();
 	glutSwapBuffers();
 	glFlush();
 }
+
+
 
 
 
@@ -155,7 +153,7 @@ int main(int argc, char** argv) {
 	glutPositionWindow(200, 200);
 	glutReshapeFunc(resize);
 	glutDisplayFunc(display);
-	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH);
+	glutInitDisplayMode(GLUT_DOUBLE | GLUT_RGBA | GLUT_DEPTH| GLUT_SINGLE);
 
 	glutSpecialFunc(keyboardSpecial);
 	glutKeyboardFunc(keyboard);

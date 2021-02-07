@@ -148,6 +148,7 @@ void cube(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
 }
 
 
+
 void wallX(GLfloat x, GLfloat y, GLfloat z, GLfloat len, GLfloat height) {
 	cube(x, y, z, 1, len, height);
 
@@ -404,24 +405,48 @@ void sideTwo(GLfloat x, GLfloat y, GLfloat z) {
 	hutTwo();
 	sideTwoWalls();
 
+	
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, 5);
+
+	glPushMatrix();
+	glTranslatef(-30, 0, -16);
+	glRotatef(40, 0, -1, 0);
+	container(0, 0, 0);
+	glPopMatrix();
+
 	container(-20, 0, -23);
 	glDisable(GL_TEXTURE_2D);
 	glPopMatrix();
 
 }
 
+void box(GLfloat x, GLfloat y, GLfloat z) {
+	glPushMatrix();
+	glTranslatef(x, y, z);
+	cube(0, 0, 0, 0.3, 3, 2);
+	cube(3, 0, 0, 0.3,3, 2);
+	cube(0, 0, 3, 3.3, 0.3, 2);
+	cube(0, 0, 0, 3.3, 0.3, 2);
+	cube(0, 0, 0, 3.3, 3.3, 0.3);
+	glPopMatrix();
+}
+
 void cardBoardHouse(GLfloat x, GLfloat y, GLfloat z) {
 	glPushMatrix();
 	glEnable(GL_TEXTURE_2D);
 
+
+
 	glTranslatef(x, y, z);
 
-	
+
 
 	glPushMatrix();
 	glBindTexture(GL_TEXTURE_2D, 1);
+	
+
+	box(11.7, 0, 9);
 
 	cardBoardWallX(0, 0, 0, 3);
 	cardBoardLowX(0, 4, 3, 2);
@@ -510,14 +535,102 @@ void floor(GLfloat x, GLfloat y, GLfloat z) {
 	glPopMatrix();
 }
 
+
+
 void outerWall(GLfloat x, GLfloat y, GLfloat z) {
 	glPushMatrix();
+
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, 6);
 	wallY(-50, 0, 33, 100, 20);
 	wallY(-50, 0, -21.9, 100, 20);
 	wallX(-50, 0, -21, 54, 20);
 	wallX(50, 0, -22, 56, 20);
+	
+	glBindTexture(GL_TEXTURE_2D, 7);
+	for (int i = -40; i < 50; i+=10) {
+		wallX(i, 0, 31, 2, 20);
+		wallX(i, 0, -21, 2, 20);
+	}
+
+	for (int i = 5; i < 20; i += 5) {
+		wallY(-50, i, 32.7, 100, 0.5);
+		wallY(-50, i, -21.7, 100, 0.5);
+	}
+
+	for (int i = 5; i < 20; i += 5) {
+		wallX(-49.7, i, -21, 55, 0.5);
+	}
+
+	for (int i = -21; i < 32; i += 5) {
+		wallX(-49.7, 0, i, 0.5,20);
+	}
+
+	glDisable(GL_TEXTURE_2D);
+
+
+	glPopMatrix();
+}
+
+void roof(GLfloat x, GLfloat y, GLfloat z) {
+	glPushMatrix();
+	glEnable(GL_TEXTURE_2D);
+	glBindTexture(GL_TEXTURE_2D, 7);
+	for (int i = -50; i <= 50; i += 10) {
+		//long angled rods side 1
+		glPushMatrix();
+		glTranslatef(i, 20, -23);
+		glRotatef(30, -1, 0, 0);
+		wallX(0, 0, 0, 18, 2);
+		glPopMatrix();
+	}
+	for (int i = -50; i <= 50; i += 10) {
+		//long angled rods side 2
+		glPushMatrix();
+		glTranslatef(i+1, 20, 33);
+		glRotatef(180, 0, 1, 0);
+
+		glRotatef(-30, 1, 0, 0);
+		wallX(0, 0, 0, 18, 2);
+		glPopMatrix();
+	}
+	for (int i = -50; i <= 50; i += 10) {
+		//side 1 short vertical rods
+		glPushMatrix();
+		glTranslatef(i, 29, 19);
+		glRotatef(90, 0, 1, 0);
+		wallY(0, 0,0, 1.8, 8);
+		glPopMatrix();
+
+		//side 2 short vertical rods
+		glPushMatrix();
+		glTranslatef(i, 29, -7);
+		glRotatef(90, 0, 1, 0);
+		wallY(0, 0, 0, 1.8, 8);
+		glPopMatrix();
+	}
+
+	for (int i = -50; i <= 50; i += 10) {
+
+		//side 1 top angled rods
+		glPushMatrix();
+		glTranslatef(i, 35, -8);
+		glRotatef(30, -1, 0, 0);
+		wallX(0, 0, 0, 17, 2);
+		glPopMatrix();
+	}
+
+	for (int i = -50; i <= 50; i += 10) {
+
+		//side 2 top angled rods
+		glPushMatrix();
+		glTranslatef(i+1, 35, 19);
+		glRotatef(180, 0, 1, 0);
+
+		glRotatef(-30, 1, 0, 0);
+		wallX(0, 0, 0, 17, 2);
+		glPopMatrix();
+	}
 	glDisable(GL_TEXTURE_2D);
 
 	glPopMatrix();
