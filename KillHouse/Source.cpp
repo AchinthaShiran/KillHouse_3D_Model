@@ -118,7 +118,7 @@ void display() {
 
 	outerWall(0, 0, 0);
 
-	//roof(0, 0, 0);
+	roof(0, 0, 0);
 	glPopMatrix();
 	glutSwapBuffers();
 	glFlush();

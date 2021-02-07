@@ -78,7 +78,7 @@ BitMapFile* getBmp(string fileName) {
 	return bmpRGBA;
 }
 void loadExternalTextures() {
-	BitMapFile* image[8];
+	BitMapFile* image[10];
 	image[0] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/wall.bmp");
 	image[1] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/wall3.bmp");
 	image[2] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/wall2.bmp");
@@ -87,8 +87,10 @@ void loadExternalTextures() {
 	image[5] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/container.bmp");
 	image[6] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/outerWall.bmp");
 	image[7] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/metalBars.bmp");
+	image[8] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/woodenBox.bmp");
+	image[9] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/wood2.bmp");
 
-	for (int i = 0; i < 8; i++) {
+	for (int i = 0; i < 10; i++) {
 		glBindTexture(GL_TEXTURE_2D, i);
 		glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image[i]->sizeX, image[i]->sizeY, 0, GL_RGBA, GL_UNSIGNED_BYTE, image[i]->data);
 		glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_REPEAT);
