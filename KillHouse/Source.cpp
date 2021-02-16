@@ -9,20 +9,35 @@ GLfloat windowW = 100;
 GLfloat windowH = 100;
 
 void initLighting() {
-	GLfloat L0_Ambient[] = { 0.7,0.7,0.7,1.0 };
-	GLfloat L0_Diffuse[] = { 0.7,0.7,0.7,1.0 };
-	GLfloat L0_Position[] = { 0,15,0,1 };
+	// Lighting set up
+	glLightModeli(GL_LIGHT_MODEL_LOCAL_VIEWER, GL_TRUE);
+	glEnable(GL_LIGHTING);
+	glEnable(GL_LIGHT0);
 
-	glLightfv(GL_LIGHT0, GL_AMBIENT, L0_Ambient);
-	glLightfv(GL_LIGHT0, GL_DIFFUSE, L0_Diffuse);
-	glLightfv(GL_LIGHT0, GL_POSITION, L0_Position);
+	// Set lighting intensity and color
+	GLfloat qaAmbientLight[] = { 0.2, 0.2, 0.2, 1.0 };
+	GLfloat qaDiffuseLight[] = { 0.8, 0.8, 0.8, 1.0 };
+	GLfloat qaSpecularLight[] = { 1.0, 1.0, 1.0, 1.0 };
+	glLightfv(GL_LIGHT0, GL_AMBIENT, qaAmbientLight);
+	glLightfv(GL_LIGHT0, GL_DIFFUSE, qaDiffuseLight);
+	glLightfv(GL_LIGHT0, GL_SPECULAR, qaSpecularLight);
 
+	// Set the light position
+	GLfloat qaLightPosition[] = { 0.0, 1.0, -.5, 1.0 };
+	glLightfv(GL_LIGHT0, GL_POSITION, qaLightPosition);
 }
 
 void init() {	
 	glClearColor(0.0f, 0.0f, 0.0f, 1.0f);
 	glLoadIdentity();
 	glEnable(GL_DEPTH_TEST);
+
+	glEnable(GL_LINE_SMOOTH);
+	glEnable(GL_BLEND);
+	glBlendFunc(GL_SRC_ALPHA, GL_ONE_MINUS_SRC_ALPHA);
+	glHint(GL_LINE_SMOOTH_HINT, GL_DONT_CARE);
+	glLineWidth(2.5);
+
 	loadExternalTextures();
 
 	glEnable(GL_CULL_FACE);
@@ -30,6 +45,7 @@ void init() {
 	
 	glShadeModel(GL_SMOOTH);
 
+	//initLighting();
 
 	glTexEnvf(GL_TEXTURE_ENV, GL_TEXTURE_ENV_MODE, GL_REPLACE);
 
@@ -79,13 +95,17 @@ void drawAxes() {
 
 void display() {
 	glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
-	
 
 
 	glPushMatrix();
-	glNormal3f(0.0, 0.0, 1.0);
+	glNormal3f(0.0, 1.0, 0.0);
+
+	
 	gluPerspective(1, 1, 10, 200);
 	gluLookAt(-12.5 + camX, 5.5 + camY, 2.5 + camZ, 0, 0, 0, 0, 1.0, 0);
+
+	glNormal3f(0.0, 0.0, 1.0);
+
 
 	cout << camX << " " << camY << " " << camZ<<"\n";
 	cout << moveX << " " << moveY << " " << moveZ << "\n";
@@ -96,8 +116,8 @@ void display() {
 	glRotatef(rotX, 1.0f, 0.0f, 0.0f);
 	glRotatef(rotY, 0.0f, 1.0f, 0.0f);
 	glRotatef(rotZ, 0.0f, 0.0f, 1.0f);
-	
-	drawAxes();
+
+	//drawAxes();
 	glColor3f(1.0, 1.0, 1.0);
 	drawGrid();
 
@@ -145,6 +165,7 @@ void resize(GLsizei w, GLsizei h) {
 	glLoadIdentity();
 
 }
+
 
 int main(int argc, char** argv) {
 	glutInit(&argc, argv);

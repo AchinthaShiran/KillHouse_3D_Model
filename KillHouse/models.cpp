@@ -326,7 +326,7 @@ void hutTwo() {
 void woodenStack(GLfloat x, GLfloat y, GLfloat z) {
 	glPushMatrix();
 	glEnable(GL_TEXTURE_2D);
-	glBindTexture(GL_TEXTURE_2D, 9);
+	glBindTexture(GL_TEXTURE_2D, 3);
 	glTranslatef(x, y, z);
 	
 	float height = 0;
@@ -497,9 +497,6 @@ void box(GLfloat x, GLfloat y, GLfloat z) {
 	cube(0, 0, 0, 3.3, 3.3, 0.3);
 	glPopMatrix();
 }
-
-
-
 
 void cardBoardHouse(GLfloat x, GLfloat y, GLfloat z) {
 	glPushMatrix();
