@@ -79,7 +79,7 @@ void cube(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
 	glTranslatef(x, y, z);
 
 	
-	
+	glNormal3f(0.0, 1.0, 0.0);
 	glBegin(GL_QUADS);
 	
 	//TOP
@@ -90,6 +90,7 @@ void cube(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
 	glEnd();
 
 	//BOTTOM
+	glNormal3f(0.0, -1.0, 0.0);
 	glBegin(GL_QUADS);
 	glColor3f(0.0, 1.0, 0.0);
 
@@ -101,7 +102,7 @@ void cube(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
 
 
 	// FRONT
-
+	glNormal3f(1.0, 0.0, 0.0);
 	glBegin(GL_QUADS);
 	glColor3f(1.0, 0.0, 1.0);
 	glTexCoord2f(0.0, 0.0); glVertex3f(0, 0, l);
@@ -113,7 +114,7 @@ void cube(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
 
 
 	//// BACK
-
+	glNormal3f(-1.0, 0.0, 0.0);
 	glBegin(GL_QUADS);
 	glColor3f(1.0, 1.0, 1.0);
 
@@ -126,7 +127,7 @@ void cube(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
 
 
 	// LEFT
-
+	glNormal3f(0.0, 0.0, 1.0);
 	glBegin(GL_QUADS);
 	glColor3f(1.0, 0.0, 0.0);
 
@@ -137,6 +138,7 @@ void cube(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
 	glEnd();
 	
 	//RIGHT
+	glNormal3f(0.0, 0.0, -1.0);
 	glBegin(GL_QUADS);
 	glColor3f(0.0, 0.0, 1.0);
 

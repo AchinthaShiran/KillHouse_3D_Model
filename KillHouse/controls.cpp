@@ -14,18 +14,57 @@
  GLfloat moveY = 0.0f;
  GLfloat moveZ = 0.0f;
 
-void keyboardSpecial(int key, int x, int y) {
-	if (key == GLUT_UP) {
-		camY += 0.5;
-	}
-	if (key == GLUT_DOWN) {
-		camZ--;
-	}
-	glutPostRedisplay();
+ GLfloat lightX = 0.0f;
+ GLfloat lightY = 0.0f;
+ GLfloat lightZ = 0.0f;
 
-}
+
+
+ void keyboardSpecial(int key, int x, int y) {
+	 if (key == GLUT_KEY_UP)
+		 camY += 0.5;
+
+	 if (key == GLUT_KEY_DOWN)
+		 camY -= 0.5;
+
+	 if (key == GLUT_KEY_LEFT)
+		 camZ += 0.5;
+
+	 if (key == GLUT_KEY_RIGHT)
+		 camZ -= 0.5;
+
+	 if (key == '+') {
+		 camX += 0.5;
+	 }
+	 if (key == '-') {
+		 camX -= 0.5;
+	 }
+	 glutPostRedisplay();
+ }
 
 void keyboard(unsigned char key, int x, int y) {
+	
+	//light
+	if (key == 'S') {
+		lightY += 0.5;
+	}
+	if (key == 'W') {
+		lightY -= 0.5;
+	}
+	if (key == 'H') {
+		lightX += 0.5;
+	}
+	if (key == 'G') {
+		lightX -= 0.5;
+	}
+	if (key == 'A') {
+		lightZ += 0.5;
+	}
+	if (key == 'D') {
+		lightZ -= 0.5;
+	}
+
+	
 	//move
 	if (key == 's') {
 		moveY += 0.5;
@@ -66,25 +105,41 @@ void keyboard(unsigned char key, int x, int y) {
 		rotZ -= 2.0;
 	}
 
-	//camera
-	if (key == '+') {
-		camX += 0.5;
-	}
-	if (key == '-') {
-		camX -= 0.5;
-	}
-	if (key == '8') {
-		camY += 0.5;
-	}
-	if (key == '2') {
-		camY -= 0.5;
-	}
-	if (key == '4') {
-		camZ += 0.5;
-	}
-	if (key == '6') {
-		camZ -= 0.5;
-	}
+
+
+	if (key == ')')
+		glDisable(GL_LIGHT0);
+	if (key == '0')
+		glEnable(GL_LIGHT0);
+	if (key == '!')
+		glDisable(GL_LIGHT1);
+	if (key == '1')
+		glEnable(GL_LIGHT1);
+	if (key == '@')
+		glDisable(GL_LIGHT2);
+	if (key == '2') 
+		glEnable(GL_LIGHT2);
+	if (key == '#')
+		glDisable(GL_LIGHT3);
+	if (key == '3')
+		glEnable(GL_LIGHT3);
+	if (key == '$')
+		glDisable(GL_LIGHT4);
+	if (key == '4')
+		glEnable(GL_LIGHT4);
+	if (key == '%')
+		glDisable(GL_LIGHT5);
+	if (key == '5')
+		glEnable(GL_LIGHT5);
+	if (key == '^')
+		glDisable(GL_LIGHT6);
+	if (key == '6')
+		glEnable(GL_LIGHT6);
+	if (key == '&')
+		glDisable(GL_LIGHT7);
+	if (key == '7')
+		glEnable(GL_LIGHT7);
+
 
 	glutPostRedisplay();
 }
