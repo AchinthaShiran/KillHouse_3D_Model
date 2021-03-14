@@ -46,22 +46,22 @@ void keyboard(unsigned char key, int x, int y) {
 	
 	//light
 	if (key == 'S') {
-		lightY += 0.5;
+		lightY += 0.1;
 	}
 	if (key == 'W') {
-		lightY -= 0.5;
+		lightY -= 0.1;
 	}
 	if (key == 'H') {
-		lightX += 0.5;
+		lightX += 0.1;
 	}
 	if (key == 'G') {
-		lightX -= 0.5;
+		lightX -= 0.1;
 	}
 	if (key == 'A') {
-		lightZ += 0.5;
+		lightZ += 0.1;
 	}
 	if (key == 'D') {
-		lightZ -= 0.5;
+		lightZ -= 0.1;
 	}
 
 	

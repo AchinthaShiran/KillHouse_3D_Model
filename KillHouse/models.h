@@ -23,3 +23,5 @@ void floor(GLfloat x, GLfloat y, GLfloat z);
 void outerWall(GLfloat x, GLfloat y, GLfloat z);
 
 void roof(GLfloat x, GLfloat y, GLfloat z);
+
+void target(GLfloat x, GLfloat y, GLfloat z, GLfloat angle);

@@ -75,7 +75,6 @@ void wall_dead(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h)
 void cube(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
 	
 	glPushMatrix();
-	glTranslatef(0, 0, 0);
 	glTranslatef(x, y, z);
 
 	
@@ -92,7 +91,7 @@ void cube(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
 	//BOTTOM
 	glNormal3f(0.0, -1.0, 0.0);
 	glBegin(GL_QUADS);
-	glColor3f(0.0, 1.0, 0.0);
+	//glColor3f(0.0, 1.0, 0.0);
 
 	glTexCoord2f(0.0, 0.0); glVertex3f(0, 0, 0);
 	glTexCoord2f(1.0, 0.0); glVertex3f(w,0, 0);
@@ -104,7 +103,7 @@ void cube(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
 	// FRONT
 	glNormal3f(1.0, 0.0, 0.0);
 	glBegin(GL_QUADS);
-	glColor3f(1.0, 0.0, 1.0);
+	//glColor3f(1.0, 0.0, 1.0);
 	glTexCoord2f(0.0, 0.0); glVertex3f(0, 0, l);
 	glTexCoord2f(1.0, 0.0); glVertex3f(w, 0, l);
 	glTexCoord2f(1.0, 1.0); glVertex3f(w, h, l);
@@ -116,7 +115,7 @@ void cube(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
 	//// BACK
 	glNormal3f(-1.0, 0.0, 0.0);
 	glBegin(GL_QUADS);
-	glColor3f(1.0, 1.0, 1.0);
+	//glColor3f(1.0, 1.0, 1.0);
 
 	glTexCoord2f(1.0, 1.0); glVertex3f(0, 0, 0);
 	glTexCoord2f(1.0, 0.0); glVertex3f(0, h, 0);
@@ -129,7 +128,7 @@ void cube(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
 	// LEFT
 	glNormal3f(0.0, 0.0, 1.0);
 	glBegin(GL_QUADS);
-	glColor3f(1.0, 0.0, 0.0);
+	//glColor3f(1.0, 0.0, 0.0);
 
 	glTexCoord2f(0.0, 0.0); glVertex3f(0, 0, 0);
 	glTexCoord2f(1.0, 0.0); glVertex3f(0, 0, l );
@@ -140,7 +139,7 @@ void cube(GLfloat x, GLfloat y, GLfloat z, GLfloat w, GLfloat l, GLfloat h) {
 	//RIGHT
 	glNormal3f(0.0, 0.0, -1.0);
 	glBegin(GL_QUADS);
-	glColor3f(0.0, 0.0, 1.0);
+	//glColor3f(0.0, 0.0, 1.0);
 
 	glTexCoord2f(1.0, 1.0); glVertex3f(w , 0, 0);
 	glTexCoord2f(1.0, 0.0); glVertex3f(w , h , 0);
@@ -591,6 +590,7 @@ void tower(GLfloat x, GLfloat y, GLfloat z) {
 
 void floor(GLfloat x, GLfloat y, GLfloat z) {
 	glPushMatrix();
+	glNormal3f(0, 1, 0);
 	glEnable(GL_TEXTURE_2D);
 	glBindTexture(GL_TEXTURE_2D, 4);
 	glBegin(GL_POLYGON);
@@ -778,5 +778,14 @@ void roof(GLfloat x, GLfloat y, GLfloat z) {
 
 	glDisable(GL_TEXTURE_2D);
 
+	glPopMatrix();
+}
+
+void target(GLfloat x, GLfloat y, GLfloat z,GLfloat angle) {
+	glPushMatrix();
+	glTranslatef(x, y, z);
+	glRotatef(angle, 0, 1, 0);
+	cube(0, 0, 0, 0.2, 1, 2);
+	cube(0, 2, 0.25, 0.2, 0.5, 0.5);
 	glPopMatrix();
 }
