@@ -34,6 +34,9 @@ int target_7_step = 1;
 GLfloat target8 = -12.8;
 int target_8_step = 1;
 
+int redLight = 0;
+
+
 void initLighting() {
 
 	//Decalring the Ambient, Diffuse components of the LIght_0 and the position in the eye coordinate system
@@ -56,21 +59,26 @@ void initLighting() {
 	GLfloat L1_Ambient[] = { 0.9, 0.1, 0.1, 1.0 };
 	GLfloat L1_Diffuse[] = { 0.9, 0.1, 0.1, 1.0 };
 	GLfloat L1_Specular[] = { 0.9, 0.1, 0.1, 1.0 }; 
-	GLfloat L1_postion[] = { 27,1,8.5, 1.0 };
+	GLfloat L1_postion[] = { 2.7, 4.0, 6.3, 1.0 };
+	//GLfloat L1_postion[] = { 27,1,8.5, 1.0 };
+	GLfloat L1_SpotDirection[] = { 1.0, 0.0, 0.0 };
+	glLightfv(GL_LIGHT1, GL_POSITION, L1_postion);
 
 	//glLightfv(GL_LIGHT1, GL_AMBIENT, L1_Ambient);
 	glLightfv(GL_LIGHT1, GL_DIFFUSE, L1_Diffuse);
 	glLightfv(GL_LIGHT1, GL_SPECULAR, L1_Specular);
-	glLightfv(GL_LIGHT1, GL_POSITION, L1_postion);
-	GLfloat L1_SpotDirection[] = { 1.0, 0.0, 0.0 };
-
-	glLightfv(GL_LIGHT2, GL_SPOT_DIRECTION, L1_SpotDirection);
-	glLightf(GL_LIGHT2, GL_SPOT_CUTOFF, 10.0);
 
 	glPushMatrix();
+	glRotatef(redLight, 0, 1, 0);
+	glLightfv(GL_LIGHT1, GL_SPOT_DIRECTION, L1_SpotDirection);
+	glPopMatrix();
+
+	glLightf(GL_LIGHT1, GL_SPOT_CUTOFF, 50.0);
+
+	/*glPushMatrix();
 	glTranslatef(lightX, lightY, lightZ);
 	glutSolidSphere(0.4, 100, 100);
-	glPopMatrix();
+	glPopMatrix();*/
 
 
 
@@ -375,12 +383,12 @@ void resize(GLsizei w, GLsizei h) {
 
 void Timer(int value) {
 
-	
+
 	if (target1 >= 10.0) {
-		target_1_step=0;
+		target_1_step = 0;
 	}
-	if (target1<=0.5) {
-		target_1_step=1;
+	if (target1 <= 0.5) {
+		target_1_step = 1;
 	}
 	if (target2 >= 0.0) {
 		target_2_step = 0;
@@ -430,7 +438,7 @@ void Timer(int value) {
 	if (target_1_step == 0) {
 		target1 -= 0.1;
 	}
-	else if(target_1_step==1){
+	else if (target_1_step == 1) {
 		target1 += 0.1;
 	}
 	if (target_2_step == 0) {
@@ -476,8 +484,12 @@ void Timer(int value) {
 		target8 += 0.07;
 	}
 
-
+	if (redLight > 360) {
+		redLight = 0;
+	}
+	redLight += 15;
 	
+
 	glutPostRedisplay();
 	glutTimerFunc(30, Timer, 1);
 
