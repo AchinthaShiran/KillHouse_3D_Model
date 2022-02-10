@@ -79,16 +79,16 @@ BitMapFile* getBmp(string fileName) {
 }
 void loadExternalTextures() {
 	BitMapFile* image[10];
-	image[0] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/wall.bmp");
-	image[1] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/wall3.bmp");
-	image[2] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/wall2.bmp");
-	image[3] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/wood.bmp");
-	image[4] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/floor.bmp");
-	image[5] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/container1.bmp");
-	image[6] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/outerWall.bmp");
-	image[7] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/metalBars.bmp");
-	image[8] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/woodenBox.bmp");
-	image[9] = getBmp("D:/Achi/Uni Notes/3rd Year/Semester ii/CS308/308_Project/KillHouse/asserts/wood2.bmp");
+	image[0] = getBmp("asserts/wall.bmp");
+	image[1] = getBmp("asserts/wall3.bmp");
+	image[2] = getBmp("asserts/wall2.bmp");
+	image[3] = getBmp("asserts/wood.bmp");
+	image[4] = getBmp("asserts/floor.bmp");
+	image[5] = getBmp("asserts/container1.bmp");
+	image[6] = getBmp("asserts/outerWall.bmp");
+	image[7] = getBmp("asserts/metalBars.bmp");
+	image[8] = getBmp("asserts/woodenBox.bmp");
+	image[9] = getBmp("asserts/wood2.bmp");
 
 	for (int i = 0; i < 10; i++) {
 		glBindTexture(GL_TEXTURE_2D, i);
