@@ -1,2 +1,7 @@
-﻿  textures.cpp
+﻿  controls.cpp
+  models.cpp
+  Source.cpp
+E:\Achi\uni\yr3\CS308\Project\KillHouse\Source.cpp(6,10): warning C4067: unexpected tokens following preprocessor directive - expected a newline
+  textures.cpp
+  Generating Code...
   KillHouse.vcxproj -> E:\Achi\uni\yr3\CS308\Project\Debug\KillHouse.exe
